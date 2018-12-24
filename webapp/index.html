@@ -1,0 +1,49 @@
+<!-- <html>
+  <head>
+    <title>A Multiplayer Game</title>
+    <style>
+      canvas {
+        width: 800px;
+        height: 600px;
+        border: 5px solid black;
+      }
+    </style>
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+
+  </body>
+  <script src="/static/game.js"></script>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JSMpeg Stream Client</title>
+	<style type="text/css">
+		html, body {
+			background-color: #111;
+			text-align: center;
+		}
+	</style>
+
+</head>
+<body>
+	<canvas id="video-canvas"></canvas>
+
+    <script src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript" src="/static/jsmpeg.min.js"></script>
+	<script type="text/javascript">
+		var canvas = document.getElementById('video-canvas');
+		var url = 'ws://'+document.location.hostname+':8082/';
+		var player = new JSMpeg.Player(url, {canvas: canvas});
+
+        // var client = new WebSocket( 'ws://localhost:8082/' );
+		// var canvas = document.getElementById('video-canvas');
+		// var player = new JSMpeg.Player(client, {canvas:canvas});
+	</script>
+    <script src="/static/game.js"></script>
+</body>
+</html>
