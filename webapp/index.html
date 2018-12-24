@@ -30,7 +30,7 @@
 	<script type="text/javascript">
 		var canvas = document.getElementById('video-canvas');
 		var url = 'ws://'+document.location.hostname+':8082/';
-		var player = new JSMpeg.Player(url, {canvas: canvas});
+		var player = new JSMpeg.Player(url, {canvas: canvas, audio: false, });
 	</script>
     <script src="/static/logic.js"></script>
 </body>
