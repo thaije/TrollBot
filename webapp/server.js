@@ -24,14 +24,26 @@ server.listen(5000, function() {
   console.log('Starting server on port 5000');
 });
 
-
-var players = {};
+// send motor commands back to server
 io.on('connection', function(socket) {
-
     socket.on('click', function(data) {
         console.log("click, motor commands needed", data.hor, data.vert);
     });
 });
+
+// adapt screen ratio based on
+document.addEventListener("orientationchange", function(event){
+    switch(window.orientation)
+    {
+        case -90: case 90:
+            /* Device is in landscape mode */
+            break;
+        default:
+            /* Device is in portrait mode */
+    }
+});
+
+
 // setInterval(function() {
 //     io.sockets.emit('state', players);
 // }, 1000 / 60);
