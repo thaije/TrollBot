@@ -2,9 +2,76 @@ var socket = io();
 
 
 
-// socket.on('message', function(data) {
-//   console.log(data);
-// });
+// go Fullscreen button
+// var goFS = document.getElementById("goFS");
+// goFS.addEventListener("click", function() {
+//     console.log("Button click")
+//     document.body.requestFullscreen();
+//     document.body.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+//     document.body.mozRequestFullScreen();
+//     document.body.msRequestFullscreen();
+//     document.body.requestFullscreen(); // standard
+// }, false);
+
+
+
+
+// resize after a slight delay, because of having to reset the width etc. of
+// previous js shizzel
+window.onload = fixStreamSizeDelayed;
+function fixStreamSizeDelayed() {
+    setTimeout(function(){
+        fixStreamSize();
+    }, 500);
+}
+
+// fit the stream as well as possible to the window
+window.addEventListener("resize", fixStreamSize);
+function fixStreamSize() {
+    // get elements
+    var canvas = document.getElementById('video-canvas');
+    var bgLeft = document.getElementById('bg-left');
+    var bgRight = document.getElementById('bg-right');
+    var filler = document.getElementById('filler');
+
+    // var aspectRatio = 1920 / 1080 // 1.7778:1
+    var aspectRatio = 640 / 480; // 1.33:1
+
+    // by default we sit width to 100%, but check if this is also allright with
+    // the height (no overflow)
+    if ((window.innerWidth / aspectRatio) > window.innerHeight) {
+        console.log("Resizing, height max");
+        canvas.style.width = 'auto';
+        canvas.style.height = '100%';
+
+        // Size of gap on sides
+        var gapOnSides = Math.round((window.innerWidth - canvas.clientWidth) / 2);
+
+        // scale side pussies
+        bgLeft.style.height = canvas.clientHeight + "px";
+        bgLeft.style.width = gapOnSides + "px";
+        bgRight.style.height = canvas.clientHeight + "px";
+        bgRight.style.width = gapOnSides + "px";
+
+    } else {
+        console.log("Resizing, width max");
+
+        // hide side pussies
+        bgLeft.style.width = "0px";
+        bgRight.style.width = "0px";
+
+        // scale stream
+        canvas.style.width = '100%';
+        canvas.style.height = 'auto';
+    }
+
+    // fix filler height
+    var w = Math.round(window.innerHeight - canvas.clientHeight);
+    filler.style.height = w + "px";
+
+    console.log("Filler height set to:", w);
+
+}
 
 
 // get percentual x and y position of the mouse click
@@ -57,6 +124,10 @@ document.addEventListener("click", function(event){
 
 
 
+
+// socket.on('message', function(data) {
+//   console.log(data);
+// });
 
 
 // var canvas = document.getElementById('canvas');

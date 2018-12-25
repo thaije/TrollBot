@@ -26,7 +26,11 @@ Show available devices: `v4l2-ctl --list-devices`
     - `cd video-streaming`  
     - `node websocket-relay yoursecret 8081 8082`  
 - Tab 2:  
-    - `ffmpeg -i /dev/video0 -f mpegts -codec:v mpeg1video -bf 0 -r 30 http://localhost:8081/yoursecret`  
+    - `ffmpeg -i /dev/video0 -f mpegts -codec:v mpeg1video -bf 0 -s 640x480 -r 30 http://localhost:8081/yoursecret`  
+    - Other possible settings:
+        - `-s 1920x1080 -r 30`
+        - `-s 1280x720 -r 60`
+
 - Tab 3:   
     - `cd webapp`  
     - `node server`  
