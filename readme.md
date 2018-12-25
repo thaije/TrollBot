@@ -8,6 +8,9 @@ camera(rpi) --ffmpeg--> nodejs with jsmpeg (rpi) --websocket--> nodejs webapp (r
 
 
 
+### nodejs <-> python
+https://stackoverflow.com/questions/23450534/how-to-call-a-python-function-from-node-js/50627157
+
 # Installation
 Requires ffmpeg, vl4-utils
 
@@ -22,18 +25,24 @@ Requires ffmpeg, vl4-utils
 # How to run
 Show available devices: `v4l2-ctl --list-devices`   
 
-- Tab 1:  
+
+- Terminal tab 1:  
     - `cd video-streaming`  
     - `node websocket-relay yoursecret 8081 8082`  
-- Tab 2:  
+- Terminal tab 2:  
     - `ffmpeg -i /dev/video0 -f mpegts -codec:v mpeg1video -bf 0 -s 640x480 -r 30 http://localhost:8081/yoursecret`  
     - Other possible settings:
         - `-s 1920x1080 -r 30`
         - `-s 1280x720 -r 60`
 
-- Tab 3:   
+- Terminal tab 3:   
     - `cd webapp`  
     - `node server`  
+
+- Browser tab:
+    - http://localhost:5000/
+    - On other devices connected to the same network, replace localhost with ip (`ifconfig`) of rpi
+
 
 
 # Connect to rpi
