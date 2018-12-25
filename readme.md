@@ -44,6 +44,26 @@ Show available devices: `v4l2-ctl --list-devices`
     - On other devices connected to the same network, replace localhost with ip (`ifconfig`) of rpi
 
 
+# Hardware 
+#### Servo 1: (vertical servo)
+- Black: Ground pinout board
+- Red: 6v on pinout board
+- Yellow: BCM pin 13
+
+#### Servo 2: (horizontal servo)
+- Black: Ground pinout board
+- Red: 6v on pinout board
+- Yellow: BCM pin 18
+
+#### 6v accu pack 
+- Black: Ground pinout board
+- Red: 6v on pinout board 
+- Ground pinout board: ground rpi
+
+#### laser
+- black: ground rpi 
+- red: BM pin 4
+
 
 # Connect to rpi
 
