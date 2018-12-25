@@ -12,4 +12,7 @@ sock.bind((UDP_IP, UDP_PORT))
 # wait for input
 while True:
     data, addr = sock.recvfrom(1024) # buffer size is 1024 bytes
-    print ("received message, took:", (time.time() - float(data.decode())) * 1000 , "ms")
+
+    data = eval(data.decode())
+
+    print("received data:", data)
