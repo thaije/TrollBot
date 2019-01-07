@@ -36,10 +36,10 @@ if __name__ == "__main__":
             verticalServo.setPosition(verticalServo.getPosition + vert * multiplier)
             horizontalServo.setPosition(horizontalServo.getPosition + hor * multiplier)
 
-            # set laser position
-            if data[2]:
+            # set laser position -1=off, 1=on, 0=unchanged
+            if ls == 1:
                 laser.on()
-            else:
+            elif ls == -1:
                 laser.off()
 
 

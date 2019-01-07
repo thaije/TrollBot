@@ -27,7 +27,8 @@ server.listen(5000, function() {
 // send motor commands back to server
 io.on('connection', function(socket) {
     socket.on('click', function(data) {
-        console.log("click, motor commands needed", data.hor, data.vert);
+        console.log("click, motor commands needed", data.hor, data.vert, " laser:", data.ls);
+        // exec("python3 ../rpi-control/sendCommand.py " + data.hor + " " + data.vert + " " + data.ls);
     });
 });
 

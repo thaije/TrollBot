@@ -20,7 +20,8 @@ def send_command(hor, vert, laser):
 
 
 def err():
-    print("Invalid arguments. Use: python3 sendCommand.py hor(-100, 100) vert(-100,100) laser(0, 1)")
+    # check rpi-control/control.py for meanings
+    print("Invalid arguments. Use: python3 sendCommand.py hor(-100, 100) vert(-100,100) laser(-1, 1)")
     sys.exit(1)
 
 # check for missing arguments
@@ -33,7 +34,7 @@ vert = int(sys.argv[2])
 laser = int(sys.argv[3])
 
 # check inputs even more
-if hor > 100 or hor < -100 or vert > 100 or vert < -100 or laser > 1 or laser < 0:
+if hor > 100 or hor < -100 or vert > 100 or vert < -100 or laser > 1 or laser < -1:
     err()
 
 # send command

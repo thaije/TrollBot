@@ -104,6 +104,30 @@ function getMotorCommands(x, y) {
 
 // on click, calculate where on screen the click was, and convert to servo commands
 document.addEventListener("click", function(event){
+
+    var target = event.target || event.srcElement;
+    console.log("Click target:", target.id);
+
+    // Toggle laser
+    if (target.id == "laserToggle") {
+
+        // switch it on
+        if (target.className == "laserOff") {
+            target.className = "laserOn";
+            socket.emit('click', {"hor": 0, "vert": 0, "ls": 1});
+            console.log("toggle on");
+        }
+        // switch it off
+        else {
+            console.log("toggle off");
+            target.className = "laserOff";
+            socket.emit('click', {"hor": 0, "vert": 0, "ls": -1});
+        }
+
+        // make sure we skip the normal click behaviour
+        return
+    }
+
     console.log("Click! from game.js");
 
     [x, y] = getClickCoordinatesPerc(event);
@@ -113,7 +137,7 @@ document.addEventListener("click", function(event){
     console.log("Hor:", hor, " vert:", vert);
 
 
-    socket.emit('click', {"hor": hor, "vert": vert});
+    socket.emit('click', {"hor": hor, "vert": vert, "ls": 0});
 });
 
 

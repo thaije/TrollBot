@@ -54,6 +54,27 @@
 			right: 0;
 		}
 
+		#laserToggle {
+			width: 10px;
+		    height: 10px;
+		    position: absolute;
+		    bottom: 5px;
+		    left: 50%;
+		    -webkit-border-radius: 50%;
+		    -moz-border-radius: 50%;
+		    border-radius: 50%;
+			border: 2px solid red;
+		    box-shadow: 0px 0px 3px 1px #3c3c3c;
+		}
+
+		.laserOff {
+			background: transparent;
+		}
+
+		.laserOn {
+		    background-color: red;
+		}
+
 		/*#goFS {
 			position: absolute;
 			top:50%;
@@ -65,6 +86,7 @@
 
 </head>
 <body>
+	<div id="laserToggle" class="laserOff"></div>
 	<div id="bg-left"></div>
 	<div id="bg-right"></div>
 	<canvas id="video-canvas"></canvas>
