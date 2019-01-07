@@ -8,6 +8,9 @@ var app = express();
 var server = http.Server(app);
 var io = socketIO(server);
 
+const util = require('util');
+const exec = util.promisify(require('child_process').exec);
+
 
 app.set('port', 5000);
 app.use('/static', express.static(__dirname + '/static'));
@@ -28,7 +31,7 @@ server.listen(5000, function() {
 io.on('connection', function(socket) {
     socket.on('click', function(data) {
         console.log("click, motor commands needed", data.hor, data.vert, " laser:", data.ls);
-        // exec("python3 ../rpi-control/sendCommand.py " + data.hor + " " + data.vert + " " + data.ls);
+        exec("python3 ../rpi-control/sendCommand.py " + data.hor + " " + data.vert + " " + data.ls);
     });
 });
 
