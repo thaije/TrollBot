@@ -12,7 +12,7 @@ camera(rpi) --ffmpeg--> nodejs with jsmpeg (rpi) --websocket--> nodejs webapp (r
 https://stackoverflow.com/questions/23450534/how-to-call-a-python-function-from-node-js/50627157
 
 # Installation
-Requires ffmpeg, vl4-utils
+Requires ffmpeg, vl4-utils, nodejs, npm, pigpio, RPi.GPIO
 
 - `git clone https://github.com/thaije/TrollBot.git`
 - `cd TrollBot/video-streaming`
@@ -27,6 +27,7 @@ Show available devices: `v4l2-ctl --list-devices`
 
 
 - Terminal tab 1:  
+    - `sudo pigpiod`
     - `cd video-streaming`  
     - `node websocket-relay yoursecret 8081 8082`  
 - Terminal tab 2:  
@@ -44,7 +45,7 @@ Show available devices: `v4l2-ctl --list-devices`
     - On other devices connected to the same network, replace localhost with ip (`ifconfig`) of rpi
 
 
-# Hardware 
+# Hardware
 #### Servo 1: (vertical servo)
 - Black: Ground pinout board
 - Red: 6v on pinout board
@@ -55,13 +56,13 @@ Show available devices: `v4l2-ctl --list-devices`
 - Red: 6v on pinout board
 - Yellow: BCM pin 18
 
-#### 6v accu pack 
+#### 6v accu pack
 - Black: Ground pinout board
-- Red: 6v on pinout board 
+- Red: 6v on pinout board
 - Ground pinout board: ground rpi
 
 #### laser
-- black: ground rpi 
+- black: ground rpi
 - red: BM pin 4
 
 
