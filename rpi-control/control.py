@@ -42,7 +42,7 @@ if __name__ == "__main__":
             elif ls == -1:
                 laser.off()
 
-     except KeyboardInterrupt:
+    except KeyboardInterrupt:
         pass
 
     # cleanup, even when script is given an error (e.g. keyboard interrupt)
