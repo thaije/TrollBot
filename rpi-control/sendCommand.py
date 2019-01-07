@@ -29,9 +29,9 @@ if len(sys.argv) < 4:
     err()
 
 # get command line arguments
-hor = int(sys.argv[1])
-vert = int(sys.argv[2])
-laser = int(sys.argv[3])
+hor = int(float(sys.argv[1]))
+vert = int(float(sys.argv[2]))
+laser = int(float(sys.argv[3]))
 
 # check inputs even more
 if hor > 100 or hor < -100 or vert > 100 or vert < -100 or laser > 1 or laser < -1:

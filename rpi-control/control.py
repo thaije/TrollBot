@@ -4,7 +4,7 @@ from time import sleep
 import socket
 
 
-multiplier = 1
+multiplier = 2.5
 
 if __name__ == "__main__":
     laser = Laser()
@@ -33,8 +33,8 @@ if __name__ == "__main__":
             print("Socket received command: Hor:", hor, " vert:", vert, " laser:", ls)
 
             # set servo positions
-            verticalServo.setPosition(verticalServo.getPosition + vert * multiplier)
-            horizontalServo.setPosition(horizontalServo.getPosition + hor * multiplier)
+            verticalServo.setPosition(verticalServo.getPosition() + vert * multiplier)
+            horizontalServo.setPosition(horizontalServo.getPosition() + hor * multiplier)
 
             # set laser position -1=off, 1=on, 0=unchanged
             if ls == 1:
@@ -47,4 +47,4 @@ if __name__ == "__main__":
     finally:
         laser.off()
         print("Cleaning up servos")
-        servoControl.cleanup_servos(servos)
+        servoControl.cleanup_servos([verticalServo, horizontalServo])
