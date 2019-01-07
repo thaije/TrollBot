@@ -27,7 +27,6 @@ Show available devices: `v4l2-ctl --list-devices`
 
 
 - Terminal tab 1:  
-    - `sudo pigpiod`
     - `cd video-streaming`  
     - `node websocket-relay yoursecret 8081 8082`  
 - Terminal tab 2:  
@@ -35,8 +34,12 @@ Show available devices: `v4l2-ctl --list-devices`
     - Other possible settings:
         - `-s 1920x1080 -r 30`
         - `-s 1280x720 -r 60`
+- Terminal tab 3:
+    - `sudo pigpiod`
+    - `cd rpi-control`
+    - `python3 control.py`
 
-- Terminal tab 3:   
+- Terminal tab 4:   
     - `cd webapp`  
     - `node server`  
 
