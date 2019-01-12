@@ -79,12 +79,4 @@ Show available devices: `v4l2-ctl --list-devices`
 - red: BM pin 4
 
 
-# Connect to rpi
 
-##### Ubuntu login
-User fedya  
-Login kutraspberry
-
-##### ssh:
-`ssh fedya@192.168.178.68`   
-password: kutraspberry
