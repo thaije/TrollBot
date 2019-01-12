@@ -5,7 +5,7 @@ connect to, and control a pan-tilt combo of servos to control the rpi camera and
 
 The order is:   
 
-[Diagram][cat_laser_diagram]
+![Diagram](https://github.com/thaije/TrollBot/blob/master/cat_laser_diagram.png)
 
 
 
