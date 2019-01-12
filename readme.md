@@ -4,12 +4,10 @@ Livestream the video of a  raspberry pi to a webserver (nodejs), which users can
 connect to, and control a pan-tilt combo of servos to control the rpi camera and laser pointer.
 
 The order is:   
-camera(rpi) --ffmpeg--> nodejs with jsmpeg (rpi) --websocket--> nodejs webapp (rpi) -> client (browser)   
+
+[Diagram][cat_laser_diagram]
 
 
-
-### nodejs <-> python
-https://stackoverflow.com/questions/23450534/how-to-call-a-python-function-from-node-js/50627157
 
 # Installation
 Requires ffmpeg, vl4-utils, nodejs, npm, pigpio, RPi.GPIO
@@ -30,19 +28,16 @@ Show available devices: `v4l2-ctl --list-devices`
     - `cd video-streaming`  
     - `node websocket-relay yoursecret 8081 8082`  
 - Terminal tab 2:  
-    - `ffmpeg -i /dev/video0 -f mpegts -codec:v mpeg1video -bf 0 -s 640x480 -r 30 http://localhost:8081/yoursecret`  
-    - Other possible settings:
-        - `-s 1920x1080 -r 30`
-        - `-s 1280x720 -r 60`
     - Setting for raspberry camera v2 module: 		
 	    - `sudo modprobe bcm2835-v4l2`
             - `ffmpeg -s 640x480 -f video4linux2 -i /dev/video0 -f mpeg1video -b 800k -r 30 http://localhost:8081/yoursecret`
 	    - `ctrl - C`
 	    - `ffmpeg -i /dev/video0 -vf "vflip,hflip" -f mpegts -codec:v mpeg1video -bf 0 -s 640x480 -r 30 -b 800k http://localhost:8081/yoursecret`
-    - Experimental:
-	- 1280x720, 20fps, but with large delay (~1s)
-        - `ffmpeg -f video4linux2 -i /dev/video0 -f mpegts -video_size hd720 -framerate 10 -codec:v mpeg1video -bf 0 -vf vflip -s hd720 -r 30 -b 2000k http://localhost:8081/yoursecret`
-
+    - Setting for other cameras (e.g. PS Eye)
+        - `ffmpeg -i /dev/video0 -f mpegts -codec:v mpeg1video -bf 0 -s 640x480 -r 30 http://localhost:8081/yoursecret`  
+    - Other possible settings:
+        - `-s 1920x1080 -r 30`
+        - `-s 1280x720 -r 60`
 
 - Terminal tab 3:
     - `sudo pigpiod`
