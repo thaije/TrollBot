@@ -1,19 +1,14 @@
+// Author: Tjalling Haije
+// Date: 12-01-2019
+//
+// This JS file holds all the JS logic for the webapp. 
+// It calculates the servo commands based on clicks/tabs, sends this 
+// info back to the main server over the websocket, and resizes the window when the user 
+// rotates their screen.
+ 
+
+
 var socket = io();
-
-
-
-// go Fullscreen button
-// var goFS = document.getElementById("goFS");
-// goFS.addEventListener("click", function() {
-//     console.log("Button click")
-//     document.body.requestFullscreen();
-//     document.body.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
-//     document.body.mozRequestFullScreen();
-//     document.body.msRequestFullscreen();
-//     document.body.requestFullscreen(); // standard
-// }, false);
-
-
 
 
 // resize after a slight delay, because of having to reset the width etc. of
@@ -140,31 +135,3 @@ document.addEventListener("click", function(event){
     socket.emit('click', {"hor": hor, "vert": vert, "ls": 0});
 });
 
-
-// socket.emit('new player');
-// setInterval(function() {
-//   socket.emit('movement', movement);
-// }, 1000 / 60);
-
-
-
-
-// socket.on('message', function(data) {
-//   console.log(data);
-// });
-
-
-// var canvas = document.getElementById('canvas');
-// canvas.width = 800;
-// canvas.height = 600;
-// var context = canvas.getContext('2d');
-// socket.on('state', function(players) {
-//   context.clearRect(0, 0, 800, 600);
-//   context.fillStyle = 'green';
-//   for (var id in players) {
-//     var player = players[id];
-//     context.beginPath();
-//     context.arc(player.x, player.y, 10, 0, 2 * Math.PI);
-//     context.fill();
-//   }
-// });

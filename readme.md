@@ -3,9 +3,13 @@
 Livestream the video of a  raspberry pi to a webserver (nodejs), which users can
 connect to, and control a pan-tilt combo of servos to control the rpi camera and laser pointer.
 
+Also see [my blogpost on this project](http://passmethebutter.net/trolling-cats-with-a-camera-guided-laser-pointer-with-a-webapp/ ).
+
 The order is:   
 
 ![Diagram](https://github.com/thaije/TrollBot/blob/master/cat_laser_diagram.png)
+
+
 
 
 
@@ -21,8 +25,9 @@ Requires ffmpeg, vl4-utils, nodejs, npm, pigpio, RPi.GPIO
 - `npm install socket.io express`
 
 # How to run
-Show available devices: `v4l2-ctl --list-devices`   
 
+First connect all hardware as defined in the Hardware section.   
+Then startup the Raspberrypi and execute the following commands in the terminal:   
 
 - Terminal tab 1:  
     - `cd video-streaming`  
@@ -54,6 +59,16 @@ Show available devices: `v4l2-ctl --list-devices`
 
 
 # Hardware
+## Requirements:
+- Raspberry PI (tested with 3b+)
+- Camera. I used Raspberry PI camera v2, but also tested with PS Eye camera. 
+- Laser pointer. I used [this](https://www.adafruit.com/product/1054) one.
+- 2 servos. I used 2 HItec HS-422 servos.
+- 6v accu pack for the servos.
+- pan-tilt set for servos. I used [this](http://www.myduino.com/image/cache/1-250x250-500x500.jpg) pan-tilt set. 
+- The RPI camera and laser pointer were mounted on the bracket.
+
+## Wiring:
 #### Servo 1: (vertical servo)
 - Black: Ground pinout board
 - Red: 6v on pinout board

@@ -1,8 +1,10 @@
-// Dependencies
-var express = require('express');
-var http = require('http');
-var path = require('path');
-var socketIO = require('socket.io');
+// Author: Tjalling Haije
+// Date: 12-01-2019
+//
+// This Node.js node starts a webserver and serves the index.html file. 
+// The user is directly connected through a websocket with the server, 
+// which awaits laser and servo commands.
+
 
 var app = express();
 var server = http.Server(app);
@@ -35,12 +37,3 @@ io.on('connection', function(socket) {
     });
 });
 
-
-// setInterval(function() {
-//     io.sockets.emit('state', players);
-// }, 1000 / 60);
-
-
-// setInterval(function() {
-//   io.sockets.emit('message', 'hi!');
-// }, 1000);

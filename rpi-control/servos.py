@@ -1,10 +1,20 @@
+##########################################################
+# Author: Tjalling Haije
+# Date: 12-01-2019
+#
+# This file contains the code to setup and control the servos on the Raspberry PI, with 
+# the PIGPIO library
+##########################################################
+
 import pigpio
 import time
 
 pi = pigpio.pi()
 
-# Servo class with all information and methods for the wiringpi objects
+
 class Servo:
+    """ This class represents a servo, its current position, and functions to move it 
+          to another position. """
 
     def __init__(self, pin, minPos, maxPos, centerPosition):
         """ Initialize the motor with its pins, min, max and
@@ -24,16 +34,10 @@ class Servo:
         new_pos = clamp(position, self.minPos, self.maxPos)
         
         print("New position:", new_pos)
-        # calc change
-        # delta = abs(new_pos - self.position)
-        
+
         self.position = new_pos
         pi.set_servo_pulsewidth(self.pin, self.position)
         
-        # give the servo some time to move to the target pos
-        #wait_time = (self.secs_per_100 / 100) * delta
-        #time.sleep(wait_time)
-        #pi.set_servo_pulsewidth(self.pin, 0)
 
     def center(self):
         self.setPosition(self.centerPosition)

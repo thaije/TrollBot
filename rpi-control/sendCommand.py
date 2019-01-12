@@ -1,3 +1,12 @@
+##########################################################
+# Author: Tjalling Haije
+# Date: 12-01-2019
+#
+# This file receives the servo and laser commands from Node.js, and sends it to the Python 
+# websocket
+#
+##########################################################
+
 import socket
 import time
 import sys

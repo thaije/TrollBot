@@ -1,9 +1,18 @@
+##########################################################
+# Author: Tjalling Haije
+# Date: 12-01-2019
+#
+# This file opens a websocket which waits for servo and laser commands
+#
+##########################################################
+
 import servos as servoControl
 from laser import Laser
 from time import sleep
 import socket
 
 
+# how much servo ticks to move per percentage received
 multiplier = 2.5
 
 if __name__ == "__main__":

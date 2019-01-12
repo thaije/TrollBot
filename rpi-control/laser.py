@@ -1,3 +1,11 @@
+##########################################################
+# Author: Tjalling Haije
+# Date: 12-01-2019
+#
+# Simple class which toggles the laser pointer on or off.
+#
+##########################################################
+
 import RPi.GPIO as GPIO
 import time
 
