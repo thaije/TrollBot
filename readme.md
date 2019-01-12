@@ -1,7 +1,7 @@
 
 # TrollBot
 Livestream the video of a  raspberry pi to a webserver (nodejs), which users can
-connect to, and control a pan-tilt combo of servos to control the rpi camera.
+connect to, and control a pan-tilt combo of servos to control the rpi camera and laser pointer.
 
 The order is:   
 camera(rpi) --ffmpeg--> nodejs with jsmpeg (rpi) --websocket--> nodejs webapp (rpi) -> client (browser)   
