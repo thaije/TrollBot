@@ -5,6 +5,11 @@
 // The user is directly connected through a websocket with the server, 
 // which awaits laser and servo commands.
 
+var express = require('express'),
+	http = require('http'),
+	socketIO = require('socket.io'),
+	path = require('path');
+
 
 var app = express();
 var server = http.Server(app);
